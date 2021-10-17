@@ -6,6 +6,8 @@ import Products from './components/Products';
 import Filter from './components/Filter';
 import Cart from  './components/Cart';
 import Zoom from 'react-reveal/Zoom';
+import store from "./store";
+import { Provider } from 'react-redux';
 class App extends Component {
   constructor() {
     super();
@@ -19,6 +21,7 @@ class App extends Component {
       
     }
   }
+  
   createOrder = (order) => {
     alert("Are you sure you need to save this order " + order.name);
     
@@ -95,6 +98,7 @@ class App extends Component {
 
   render() {
     return (
+      <Provider store={store}>
       <div className="grid-container">
         
         <header>
@@ -127,6 +131,7 @@ class App extends Component {
           All right is reserved.
         </footer>
       </div>
+      </Provider>
     );
   }
 }
