@@ -1,3 +1,5 @@
 export const FETCH_PRODUCTS ="FETCH_PRODUCTS";
 export const ORDER_PRODUCTS_BY_PRICE="ORDER_PRODUCTS_BY_PRICE";
 export const FILTER_PRODUCTS_BY_SIZE="FILTER_PRODUCTS_BY_SIZE";
+export const ADD_TO_CART="ADD_TO_CART";//s 1
+export const Remove_FROM_CART="Remove_FROM_CART";//s 1

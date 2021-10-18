@@ -5,7 +5,7 @@ import Zoom from    "react-reveal/Zoom";
 import Modal from    'react-modal';
 import { connect } from "react-redux";
 import {fetchProducts} from "../actions/productActions"
-
+import  {addToCart} from "../actions/cartAction";
 class Products extends Component {
     constructor(props){
         super(props);
@@ -14,6 +14,8 @@ class Products extends Component {
         };
     }
     componentDidMount(){
+        //calls action function 
+        //you have to know that fetch product is passed as props from connect func
         this.props.fetchProducts();
       }
     openModal=(product)=>{
@@ -102,5 +104,6 @@ class Products extends Component {
 //the first one is the func that accept state and return an object that define which part of the states i gonna use
 //the second parameter is list of actions
 //the connect func itself return another func , the parameter is the name of the comp which we will connect
-export default connect((state) =>({products:state.products.filteredItems}), {fetchProducts})
+export default connect((state) =>({products:state.products.filteredItems}), {fetchProducts,addToCart })
 (Products);
+//s 5
