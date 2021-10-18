@@ -57,45 +57,9 @@ class App extends Component {
   }
 
   //state func that used to pass to Filter comp as props
-  sortProducts = (e) => 
-  {
-    const sort = e.target.value;
-    console.log(e.target.value);
-    this.setState((state) => 
-    ({
-      sort: sort,
-      //products now access the filtered producta
-      products: this.state.products.slice()
-      .sort
-      (
-        (a, b) =>
-          sort === "lowest" ?
-          a.price > b.price ?1 : -1 //if a greater than b then 1 which mean change them,-1 no change (arrange lowest)
-          :sort === "highest" ?
-          a.price < b.price ?1 :-1 //if a less than b then 1 which mean change them,-1 no change (arrange highest)
-          : a._id < b._id ?1 : -1
-      ),
-    })
-    );
-  };
+  //func removed , applied now in reducer
 //state func that used to pass to Filter comp as props
-  filterProducts = (e) => {
-    console.log(e.target.value);
-    //handle the size from the user
-    if (e.target.value === "") {
-      this.setState({
-        size: "",
-        products: data.products,
-      })
-    }
-    else {
-      this.setState({
-        size: e.target.value,
-        products: data.products.filter(product => product.availableSizes.indexOf(e.target.value) >= 0),
-      })
-    }
-  }
-
+  //func removed , applied now in Actions
   render() {
     return (
       <Provider store={store}>
@@ -110,15 +74,9 @@ class App extends Component {
         <main>
           <div className="content">
             <div className="main">
-              <Filter
-                count={this.state.products.length}
-                size={this.state.size}
-                sort={this.state.sort}
-                filterProducts={this.filterProducts}
-                sortProducts={this.sortProducts}
-              >
-              </Filter>
-              <Products products={this.state.products} addToCart={this.addToCart}></Products>
+              <Filter></Filter>
+
+              <Products addToCart={this.addToCart}></Products>
             </div>
             <div className="sidebar">
               <Cart cartItems={this.state.cartItems}

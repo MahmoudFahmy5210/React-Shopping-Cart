@@ -102,5 +102,5 @@ class Products extends Component {
 //the first one is the func that accept state and return an object that define which part of the states i gonna use
 //the second parameter is list of actions
 //the connect func itself return another func , the parameter is the name of the comp which we will connect
-export default connect((state) =>({products:state.products.items}), {fetchProducts})
+export default connect((state) =>({products:state.products.filteredItems}), {fetchProducts})
 (Products);
