@@ -1,7 +1,7 @@
 //import logo from './logo.svg';
 import React, { Component } from 'react';
 import './App.css';
-import data from "./data.json"
+//import data from "./data.json"
 import Products from './components/Products';
 import Filter from './components/Filter';
 import Cart from  './components/Cart';
@@ -9,23 +9,11 @@ import Zoom from 'react-reveal/Zoom';
 import store from "./store";
 import { Provider } from 'react-redux';
 class App extends Component {
-  constructor() {
-    super();
-    
-    this.state = {
-      products: data.products,
-      cartItems:localStorage.getItem("cartItems")? JSON.parse(localStorage.getItem("cartItems")):
-      [],//we have to check the exisestance of the item in local storge before parseing it
-      size: "",
-      sort: "",
-      
-    }
-  }
-  
   createOrder = (order) => {
     alert("Are you sure you need to save this order " + order.name);
     
   };
+  /*
   removeFromCart=(product)=>{
     const cartItems=this.state.cartItems.slice();
     this.setState({
@@ -33,6 +21,7 @@ class App extends Component {
     });
     localStorage.setItem("cartItems",JSON.stringify(cartItems.filter(x=> x._id !== product._id)));
   }
+   s4
   addToCart =(product)=>{
     const cartItems = this.state.cartItems.slice();//this will create a copy of the state cartItems array
     let alreadyInCart=false; 
@@ -54,7 +43,7 @@ class App extends Component {
     }
     this.setState({cartItems:cartItems});
     localStorage.setItem("cartItems",JSON.stringify(cartItems));//"cartItems" is the key and cartItems is the value
-  }
+  }*/
 
   //state func that used to pass to Filter comp as props
   //func removed , applied now in reducer
@@ -75,13 +64,10 @@ class App extends Component {
           <div className="content">
             <div className="main">
               <Filter></Filter>
-
-              <Products addToCart={this.addToCart}></Products>
+              <Products></Products>
             </div>
             <div className="sidebar">
-              <Cart cartItems={this.state.cartItems}
-              removeFromCart={this.removeFromCart}
-              createOrder={this.createOrder} />
+              <Cart createOrder={this.createOrder} />
             </div>
           </div>
         </main>

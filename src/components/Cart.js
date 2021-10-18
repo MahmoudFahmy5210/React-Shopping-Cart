@@ -2,11 +2,13 @@ import React, { Component } from 'react';
 import formatCurrency from '../util';
 import Slide from 'react-reveal/Slide';  
 import Flip from 'react-reveal/Flip';  
-import Roll from 'react-reveal/Roll';  
+import { connect } from 'react-redux';
+import { removeFromCart } from '../actions/cartAction';
+//import Roll from 'react-reveal/Roll';  
 
 
  
-export default class Cart extends Component {
+class Cart extends Component {
     constructor(props){
         super();
         this.state= {
@@ -49,8 +51,8 @@ export default class Cart extends Component {
     }
     render() {
         const {cartItems}=this.props;
-        console.log(cartItems.length,"from Cart Cartitems.length");
-        console.log(cartItems,"from Cart Cartitems arr");
+        console.log(cartItems,"from Cart Cartitems.length");
+        //console.log(cartItems,"from Cart Cartitems arr");
 
         return (
             <div>
@@ -140,3 +142,7 @@ export default class Cart extends Component {
         
     }
 }
+export default connect((state )=> ({
+    cartItems:state.cart.cartItems,
+}),{removeFromCart}
+)(Cart);

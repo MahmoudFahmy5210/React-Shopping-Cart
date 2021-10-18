@@ -1,10 +1,11 @@
-import { FETCH_PRODUCTS, FILTER_PRODUCTS_BY_SIZE, ORDER_PRODUCTS_BY_PRICE } from '../types';
+import {  FETCH_PRODUCTS, FILTER_PRODUCTS_BY_SIZE, ORDER_PRODUCTS_BY_PRICE } from '../types';
 
 //bring to me all the product
 export const fetchProducts =() => async (dispatch) => {
     //res will carry all the data
    const res= await fetch("/api/products");
    const data=await res.json();
+   //data is array (object)
    console.log(data);
     dispatch({
         type:FETCH_PRODUCTS,
@@ -43,3 +44,4 @@ export const sortProducts =(filteredProducts,sort)=>(dispatch)=>{
         }
     })
 }
+// s 2
