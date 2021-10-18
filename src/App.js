@@ -1,7 +1,7 @@
 //import logo from './logo.svg';
 import React, { Component } from 'react';
 import './App.css';
-import data from "./data.json"
+//import data from "./data.json"
 import Products from './components/Products';
 import Filter from './components/Filter';
 import Cart from  './components/Cart';
@@ -13,11 +13,9 @@ class App extends Component {
     super();
     
     this.state = {
-      products: data.products,
       cartItems:localStorage.getItem("cartItems")? JSON.parse(localStorage.getItem("cartItems")):
       [],//we have to check the exisestance of the item in local storge before parseing it
-      size: "",
-      sort: "",
+      
       
     }
   }
