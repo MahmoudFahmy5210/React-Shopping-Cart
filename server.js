@@ -40,5 +40,49 @@ app.delete("/api/products/:id" , async (req,res) =>{
    const deletedProduct = await Product.findByIdAndDelete(req.params.id);
    res.send(deletedProduct);
 });
+//Creating Model / database for order
+//order is the name of the database 
+//schema is the info of the database/columns
+const Order = mongoose.model("order",new mongoose.Schema(
+   {
+      _id:
+      {
+         type:String,
+         default:shortid.generate
+      },
+      email:String,
+      name:String,
+      address:String,
+      total:Number,
+      cartItems:
+      [  {
+         _id:String,
+         title:String,
+         price:Number,
+         count:Number,
+         },
+      ],
+   },
+   {
+      timestamps:true,
+   },
+));
+
+//creating the post api
+app.post("/api/orders", async ( req , res) => {
+   //check existance of data from user
+   if( !req.body.name||!req.body.email||!req.body.address||!req.body.total||!req.body.cartItems)
+   {
+      //if the data is empty , answer with this response
+      return res.send({ message :" Data is required. "});
+   }
+   //if the data is complete it will reach here so
+   //Order is the const we define above
+   const order = await Order(req.body).save();
+   console.log(typeof(order),"this is the order",order);
+   res.send(order);
+});
+
+
 const port = process.env.PORT || 5000;
 app.listen(port,()=> console.log("serve at http://localhost:5000"));

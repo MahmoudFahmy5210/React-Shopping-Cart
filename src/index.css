@@ -207,3 +207,30 @@ input{
   top:2.5rem;
   z-index:1000 ;
 }
+/*Order Modal*/
+.order-details{
+  justify-content: center;
+  
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  height: 100%;
+}
+.order-details li{
+  list-style: none;
+  display: flex;
+  justify-content: space-between;
+ align-items: center;
+}
+.order-details li div{
+  padding: 10px;
+}
+.order-details .items{
+  text-align: right;
+}
+
+.success-message{
+  color: forestgreen;
+  
+  font-weight: bold;
+}
