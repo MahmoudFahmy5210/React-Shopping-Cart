@@ -29,6 +29,7 @@ class Cart extends Component {
         //set state for each input
         console.log('Name :',[e.target.name]);
         console.log('Value :',e.target.value);
+        //name attribute 
         this.setState({ [e.target.name]:e.target.value})
         
     }
@@ -76,7 +77,8 @@ class Cart extends Component {
                 )}
 
                 {
-                //if there are order do modal
+                //if there are order then execute modal
+                //true && console.log("yes");yes
                 order && 
                 (   
                     <Modal isOpen={true} onRequestClose={this.closeModal}>
@@ -176,7 +178,7 @@ class Cart extends Component {
                                         <label>Email</label>
                                         <input name="email" type="email" required  onChange={this.handleInput}></input>
                                     </li>
-                                    <li>
+                                    <li> 
                                         <label>Name</label>
                                         <input name="name" type="text" required onChange={this.handleInput}></input>
                                     </li>

@@ -52,14 +52,12 @@ class App extends Component {
   render() {
     return (
       <Provider store={store}>
-      <div className="grid-container">
-        
+      <div className="grid-container">        
         <header>
         <Zoom right cascade>
           <a href="/">React Shopping Cart</a>
-          </Zoom>
+        </Zoom>
         </header>
-        
         <main>
           <div className="content">
             <div className="main">
