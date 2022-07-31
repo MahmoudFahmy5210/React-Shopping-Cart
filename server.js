@@ -1,6 +1,7 @@
 const bodyParser = require("body-parser");//for parseing post api body
 const express = require("express"); //for creating webserver
 const mongoose = require("mongoose");//to connect to MongoDb
+const path = require('path');
 ///////
 const productRouter = require('./routers/productRouter')
 const orderRouter = require('./routers/orderRouter');
@@ -89,7 +90,14 @@ app.delete("/api/products/:id" , async (req,res) =>{
 //    console.log(typeof(order),"this is the order",order);
 //    res.send(order);
 // });
-
+//production means we deploy it
+if(process.env.NODE_ENV === 'production'){
+   //set static folder
+   app.use(express.static('Client/build'));
+   app.get('*',(req,res)=>{
+      res.sendFile(path.resolve(__dirname,'Client','build','index.html'));
+   });
+}
 
 const port = process.env.PORT || 5000;
 app.listen(port,()=> console.log("serve at http://localhost:5000"));
