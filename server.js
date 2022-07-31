@@ -1,7 +1,6 @@
 const bodyParser = require("body-parser");//for parseing post api body
 const express = require("express"); //for creating webserver
 const mongoose = require("mongoose");//to connect to MongoDb
-const shortid = require("shortid");//to use friendly user id
 ///////
 const productRouter = require('./routers/productRouter')
 const orderRouter = require('./routers/orderRouter');
